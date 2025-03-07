@@ -18,7 +18,7 @@ const AuthGuard = ({ children }: IAuthGuardProps) => {
     return children;
   }
 
-  return <Navigate to={paths.LOGIN} state={{ expired: true }} />;
+  return <Navigate to={paths.LOGIN} state={{ expired: true }} replace />;
 };
 
 export default AuthGuard;

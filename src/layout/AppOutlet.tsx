@@ -1,15 +1,13 @@
 import { Outlet } from "react-router-dom";
 import AuthGuard from "./guard/Authguard";
+import DashboardLayout from "./DashboardLayout";
 
 const AppOutlet = () => {
     return (
         <AuthGuard>
-            {/* <DashboardLayout> */}
-            <div>
+            <DashboardLayout>
                 <Outlet />
-
-            </div>
-            {/* </DashboardLayout> */}
+            </DashboardLayout>
         </AuthGuard>
     );
 };

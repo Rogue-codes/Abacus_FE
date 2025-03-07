@@ -44,17 +44,13 @@ export const userSlice = createSlice({
   reducers: {
     loginUser: (
       state,
-      action: PayloadAction<{
-        user: IUser;
-        access_token: string;
-        refresh: string;
-      }>
+      action: PayloadAction<any>
     ) => {
-      state.user = action.payload.user;
+      state.user = action.payload.business;
       state.isAuthenticated = !!action.payload.access_token;
 
-      Cookies.set("abacus-token", action.payload.access_token, { expires: 5 / (24 * 60) });
-      Cookies.set("abacus-refresh-token", action.payload.refresh, { expires: 5 });
+      Cookies.set("abacus-token", action.payload.access_token, { expires: 7 });
+      Cookies.set("abacus-refresh-token", action.payload.refresh_token, { expires: 5 });
       localStorage.setItem("abacus-user", JSON.stringify(state.user));
     },
   },

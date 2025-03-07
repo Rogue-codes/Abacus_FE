@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import PublicNav from '../../components/nav/PublicNav'
 import { lady } from '../../assets'
@@ -5,6 +6,9 @@ import Input from '../../components/input/Input'
 import { useForm } from 'react-hook-form'
 import { useLoginMutation } from '../../api/auth.api'
 import { enqueueSnackbar } from 'notistack'
+import { useEffect } from 'react'
+import { loginUser } from '../../config/authSlice'
+import { useDispatch } from 'react-redux'
 
 export interface ILoginForm {
   email: string
@@ -12,6 +16,7 @@ export interface ILoginForm {
 }
 
 export default function Login() {
+  console.log("login has rendered")
   const { watch, control, formState: { isValid }, reset } = useForm<ILoginForm>({
     defaultValues: {
       email: '',
@@ -22,7 +27,7 @@ export default function Login() {
 
 
 
-  const [login, { isLoading, isSuccess }] = useLoginMutation()
+  const [login, {data, isLoading, isSuccess }] = useLoginMutation()
 
   const onSubmit = () => {
     login({ ...formVal })
@@ -43,9 +48,7 @@ export default function Login() {
               });
             }
           });
-        } else {
-          enqueueSnackbar("Registration Failed", { variant: "error" });
-        }
+        } 
       });
   };
 
@@ -53,6 +56,24 @@ export default function Login() {
     onSubmit()
     reset()
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(
+        loginUser({
+          business: data?.business,
+          access_token: data?.access_token,
+          refresh_token: data?.refresh_token,
+        })
+      );
+      enqueueSnackbar(`welcome ${data?.data?.user_?.username}`, {
+        variant: "success",
+        anchorOrigin: { vertical: "top", horizontal: "right" },
+      });
+    }
+  }, [isSuccess]);
   return (
     <div>
       <PublicNav />
