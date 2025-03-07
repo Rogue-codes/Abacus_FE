@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+/* Gray Shades */
+.gray-50 { background-color: #f9fafb; }
+.gray-100 { background-color: #f3f4f6; }
+.gray-200 { background-color: #e5e7eb; }
+.gray-300 { background-color: #d1d5db; }
+.gray-400 { background-color: #9ca3af; }
+.gray-500 { background-color: #6b7280; }
+.gray-600 { background-color: #4b5563; }
+.gray-700 { background-color: #374151; }
+.gray-800 { background-color: #1f2937; }
+.gray-900 { background-color: #111827; }
+.gray-1000 { background-color: #000819; }
+
+/* Blue Shades */
+.blue-50 { background-color: #f8f7ff; }
+.blue-100 { background-color: #ece5ff; }
+.blue-200 { background-color: #dbc2ff; }
+.blue-300 { background-color: #c2a0ff; }
+.blue-400 { background-color: #a86be5; }
+.blue-500 { background-color: #8b6deb; }
+.blue-600 { background-color: #7050e7; }
+.blue-700 { background-color: #482dab; }
+.blue-800 { background-color: #351997; }
+.blue-900 { background-color: #160051; }
+.blue-1000 { background-color: #0c0033; }
+
+/* Purple Shades */
+.purple-50 { background-color: #f7e1f6; }
+.purple-100 { background-color: #f6c5fc; }
+.purple-200 { background-color: #ffb0f9; }
+.purple-300 { background-color: #ff91e5; }
+.purple-400 { background-color: #f272e5; }
+.purple-500 { background-color: #e05ac7; }
+.purple-600 { background-color: #cc33ba; }
+.purple-700 { background-color: #af1c8d; }
+.purple-800 { background-color: #7f0273; }
+.purple-900 { background-color: #610a56; }
+.purple-1000 { background-color: #3d0037; }
+
+/* Green Shades */
+.green-50 { background-color: #f0fdf4; }
+.green-100 { background-color: #dcfce7; }
+.green-200 { background-color: #bbf7d0; }
+.green-300 { background-color: #86efac; }
+.green-400 { background-color: #4ade80; }
+.green-500 { background-color: #22c55e; }
+.green-600 { background-color: #16a34a; }
+.green-700 { background-color: #15803d; }
+.green-800 { background-color: #166534; }
+.green-900 { background-color: #14532d; }
+.green-1000 { background-color: #063319; }
+
+/* Red Shades */
+.red-50 { background-color: #fef2f2; }
+.red-100 { background-color: #fee2e2; }
+.red-200 { background-color: #fecaca; }
+.red-300 { background-color: #fca5a5; }
+.red-400 { background-color: #f87171; }
+.red-500 { background-color: #ef4444; }
+.red-600 { background-color: #dc2626; }
+.red-700 { background-color: #b91c1c; }
+.red-800 { background-color: #991b1b; }
+.red-900 { background-color: #771d1d; }
+.red-1000 { background-color: #610e0e; }
+
+.otp-group {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  column-gap: 10px;
+}
+
+.otp-input {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+}
+.otp-input:focus{
+  outline: 2px solid #fff;
+}
