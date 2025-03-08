@@ -8,16 +8,6 @@ const routes = [
     exact: true
   },
   {
-    path: paths.LOGIN,
-    component: lazy(() => import('../views/auth/Login')),
-    exact: true
-  },
-  {
-    path: paths.REGISTER,
-    component: lazy(() => import('../views/auth/Register')),
-    exact: true
-  },
-  {
     path: `${paths.REGISTER}?verify=true`,
     component: lazy(() => import('../views/auth/Register')),
     exact: true

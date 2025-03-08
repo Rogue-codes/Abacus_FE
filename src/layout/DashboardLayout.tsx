@@ -6,7 +6,7 @@ interface IDashboardLayout {
 }
 export default function DashboardLayout({ children }: IDashboardLayout) {
     return (
-        <div className="bg-[#F9FAFB] h-screen">
+        <div className="bg-[#E5E7EB] h-screen overflow-y-scroll">
             
             <SideBar />
 

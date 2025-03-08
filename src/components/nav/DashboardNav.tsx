@@ -16,7 +16,7 @@ export default function DashboardNav() {
                         <p className='text-md text-[#000819] mt-2'>Welcome back, it’s nice to see you again.</p>
                     </div>
                     :
-                    <h1 className='text-2xl font-bold'>{pathname}</h1>
+                    <h1 className='text-2xl font-bold'>{pathname.split("/")[1].toUpperCase()}</h1>
             }
             <div className='flex justify-start items-center gap-5'>
                 <Icons.notification />

@@ -2,7 +2,7 @@
 import React from 'react'
 import { logo } from '../../assets'
 import { Icons } from '../icons'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
     const modules = JSON.parse(localStorage.getItem('abacus-user')!).modules;
@@ -24,16 +24,19 @@ export default function SideBar() {
         .sort((a: string, b: string) => desiredOrder.indexOf(a) - desiredOrder.indexOf(b));
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const {pathname} = location
+
     return (
-        <aside className='w-[17vw] shadow border border-gray-100 fixed left-0 top-0 h-screen bg-[#fff]'>
+        <aside className='w-[17vw] shadow fixed left-0 top-0 h-screen bg-[#fff]'>
             <div className='w-full flex justify-center items-center my-12'>
                 <img src={logo} alt="" />
             </div>
 
-            <div className='pl-16'>
+            <div className='pl-16 pr-8'>
                 {
                     sortedModules.map((module: any, index: number) => (
-                        <div key={index} className='w-full py-3 gap-5 flex justify-start items-center my-4' onClick={()=>navigate(`/${module.toLowerCase()}`)}>
+                        <div key={index} className={`${pathname.split("/")[1].toUpperCase() === module ? "border border-black" : "border-0"} w-full pl-4 py-3 gap-5 flex justify-start rounded-md cursor-pointer items-center my-4 `} onClick={()=>navigate(`/${module.toLowerCase()}`)}>
                             {module === "REPORTING" && <Icons.Report />}
                             {module === "DASHBOARD" && <Icons.Dashboard />}
                             {module === "WALLET" && <Icons.Wallet />}

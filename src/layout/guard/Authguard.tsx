@@ -12,13 +12,11 @@ const AuthGuard = ({ children }: IAuthGuardProps) => {
   const isAuthenticated = useSelector(
     (state: any) => state?.auth?.isAuthenticated
   );
-
-  console.log("isAuthenticated:",isAuthenticated)
   if (isAuthenticated) {
     return children;
   }
 
-  return <Navigate to={paths.LOGIN} state={{ expired: true }} replace />;
+  return <Navigate to={paths.LOGIN} state={{ expired: true }} />;
 };
 
 export default AuthGuard;

@@ -1,38 +1,49 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { paths } from "./routes/paths";
-import PublicRoute from "./layout/guard/public/PublicRoute";
-import AuthGuard from "./layout/guard/Authguard";
-import Login from "./views/auth/Login";
-import Home from "./views/home/Home";
-import AppOutlet from "./layout/AppOutlet";
-import Invemtory from "./views/inventory/Inventory";
-import Invoice from "./views/invoice/Invoice";
-import Wallet from "./views/wallet/Wallet";
-import Settings from "./views/settings/Settings";
-import Customers from "./views/customers/Customers";
-import Reporting from "./views/reporting/Reporting";
-import Profile from "./views/profile/Profile";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Appwrapper from "./layout/Appwrapper";
+import AppOutlet from "./layout/AppOutlet";
+import { paths } from "./routes/paths";
+import routes from "./routes";
+import { Suspense } from "react";
+import Preloader from "./components/preloader/Preloader";
+import PublicOutlet from "./layout/guard/public/PublicOutlet";
+import Login from "./views/auth/Login";
+import Register from "./views/auth/Register";
 
-const AppRoutes = () => {
+
+export default function App() {
+
   return (
-    <Appwrapper>
-    <Routes>
-       <Route path={paths.DASHBOARD} element={<AppOutlet />}>
-          <Route index element={<Home />} />  {/* Dashboard Home */}
+    <>
+      <Appwrapper>
+        <Routes>
+          <Route element={<AppOutlet />}>
+            <Route index element={<Navigate to={paths.DASHBOARD} />} />
+            {routes.map(({ component: Component, path }) => (
+              <Route
+                path={path}
+                key={path}
+                element={
+                  <Suspense fallback={<Preloader />}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            ))}
+          </Route>
 
-          {/* ✅ Use relative paths for child routes */}
-          <Route path="inventory" element={<Invemtory />} />
-          <Route path="invoice" element={<Invoice />} />
-          <Route path="wallet" element={<Wallet />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="reporting" element={<Reporting />} />
-          <Route path="profile" element={<Profile />} />
-        </Route>
-    </Routes>
-    </Appwrapper>
+          <Route element={<PublicOutlet />}>
+            <Route index element={<Navigate to={paths.LOGIN} />} />
+            <Route
+              path={paths.LOGIN}
+              element={
+                <Suspense fallback={<Preloader />}>
+                  <Login />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Routes>
+      </Appwrapper>
+    </>
   );
-};
-
-export default AppRoutes;
+}

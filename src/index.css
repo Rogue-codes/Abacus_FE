@@ -92,3 +92,31 @@
 .otp-input:focus{
   outline: 2px solid #fff;
 }
+
+.ant-pagination-item a {
+  color: #000819 !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #000819 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #000819 !important;
+}
+
+.ant-pagination-item:hover a {
+  color: #000819 !important;
+}
+
+.ant-pagination-item:hover {
+  border-color: #000819 !important;
+}
+
+.ant-pagination-next a, .ant-pagination-prev a {
+  color: #000819 !important;
+}
+
+.ant-pagination-next:hover a, .ant-pagination-prev:hover a {
+  color: #000819 !important;
+}

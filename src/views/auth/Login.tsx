@@ -16,7 +16,6 @@ export interface ILoginForm {
 }
 
 export default function Login() {
-  console.log("login has rendered")
   const { watch, control, formState: { isValid }, reset } = useForm<ILoginForm>({
     defaultValues: {
       email: '',
