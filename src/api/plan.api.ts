@@ -21,8 +21,24 @@ export const planApi = createApi({
       providesTags: ["plan"],
     }),
 
+    subscribe: builder.mutation<
+    any,
+    {cycle:string; business:string; plan:string; is_recurring:boolean;}
+  >({
+    query: (payload) => {
+      return {
+        url: `business/login`,
+        method: "POST",
+        body: payload,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      };
+    },
+  }),
+
   }),
 });
 
-export const { useGetPlansQuery} =
+export const { useGetPlansQuery, useSubscribeMutation} =
   planApi;

@@ -29,13 +29,15 @@ export default function Subscription() {
             </div>
 
             <div className="w-full mt-12 flex justify-center items-center gap-6">
-                {
+                {isLoading ? (<div className="h-[462px] w-full flex justify-center items-center ">
+                    <p>Loading...</p>
+                </div>) : <>{
                     data?.data.map((plan: any, index: number) => (
                         <div className={`${index === 1 ? "h-full" : "h-[462px]"} p-5  w-[314px] shadow-xl rounded-[10px] bg-white`} key={plan.id}>
                             <div>
                                 <h2 className="text-xl font-bold text-[#1E1E1E] text-center">{plan.name}</h2>
                                 <p className="text-md font-medium my-4 text-[#656565] text-center">Perfect to get started</p>
-                                <p className="text-xl font-semibold text-[#1E1E1E] text-center">{plan.currency} {plan.price}</p>
+                                <p className="text-xl font-semibold text-[#1E1E1E] text-center">{plan?.currency} {cycle === "monthly" ? Number(plan.price).toLocaleString() : (plan.price * 12).toLocaleString()}</p>
                                 <button className="w-full my-4 h-14 rounded-md bg-[#7050e7] cursor-pointer text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={index === 0}>GET STARTED</button>
                             </div>
 
@@ -47,7 +49,9 @@ export default function Subscription() {
                                 ))}
                             </div>
                         </div>
-                    ))
+                    ))}
+                </>
+
                 }
             </div>
         </div>
