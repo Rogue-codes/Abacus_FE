@@ -97,7 +97,7 @@ export default function Login() {
 
                 </form>
                 <div className='flex justify-center items-center'>
-                <button disabled={!isValid || isLoading} className='w-48 h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 bg-[#cc33ba] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed' onClick={handleBtnClick}>{ isLoading ? "Loading..." : "Submit"}</button>
+                <button disabled={!isValid || isLoading} className='w-full h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 bg-[#cc33ba] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed' onClick={handleBtnClick}>{ isLoading ? "Loading..." : "Submit"}</button>
                 </div>
 
               </div>

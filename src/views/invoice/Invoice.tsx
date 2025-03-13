@@ -57,7 +57,7 @@ export default function Invoice() {
     <div className='w-full'>
       <div className="w-full flex justify-between">
         <div className="w-[70%] h-[80vh] bg-white rounded-md p-8">
-          <div className="flex justify-between items-center">
+          <div className="flex my-8 justify-between items-center">
             <input type="text" className="w-[40%] rounded-md bg-white p-3 border border-gray-300 focus:outline-0 placeholder:text-gray-300" placeholder="Invoice ID, customer name"/>
             <button className="py-3 px-5 text-white cursor-pointer text-sm rounded-md bg-[#cc33ba]">Create Invoice</button>
           </div>

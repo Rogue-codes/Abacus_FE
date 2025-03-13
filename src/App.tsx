@@ -8,6 +8,7 @@ import Preloader from "./components/preloader/Preloader";
 import PublicOutlet from "./layout/guard/public/PublicOutlet";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
+import Subscription from "./views/subscription/Subscription";
 
 
 export default function App() {
@@ -41,7 +42,24 @@ export default function App() {
                 </Suspense>
               }
             />
+            <Route
+              path={paths.REGISTER}
+              element={
+                <Suspense fallback={<Preloader />}>
+                  <Register />
+                </Suspense>
+              }
+            />
           </Route>
+
+          <Route
+            path={paths.SUBSCRIPTION}
+            element={
+              <Suspense fallback={<Preloader />}>
+                <Subscription />
+              </Suspense>
+            }
+          />
         </Routes>
       </Appwrapper>
     </>

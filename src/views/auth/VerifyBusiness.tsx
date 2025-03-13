@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import OtpInput from '../../components/input/Otp'
 import { useVerifyBusinessMutation } from '../../api/auth.api';
 import { enqueueSnackbar } from 'notistack';
+import { paths } from '../../routes/paths';
+import { useNavigate } from 'react-router-dom';
 
 export default function VerifyBusiness() {
     const [otp, setOtp] = useState("");
@@ -11,13 +13,15 @@ export default function VerifyBusiness() {
     const [verifyBusiness, { isLoading }] = useVerifyBusinessMutation()
     const email = JSON.parse(localStorage.getItem("email")!)
 
+    const navigate = useNavigate()
+
     const handleVerifyBusiness = () => {
         verifyBusiness({
             email,
             otp
         }).unwrap().then((res) => {
             enqueueSnackbar(res.message, { variant: "success" });
-            console.log(res)
+            navigate(`${paths.LOGIN}`)
         }).catch((err) => {
             enqueueSnackbar(err?.data?.message, { variant: "error" });
         })

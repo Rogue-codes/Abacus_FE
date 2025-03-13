@@ -38,7 +38,7 @@ export default function Register() {
     })
     const [currentStep, setCurrentStep] = useState(1)
     const [searchParams] = useSearchParams();
-    const verify = searchParams.get("verify");    
+    const verify = searchParams.get("verify");
     const navigate = useNavigate()
 
     const formVal = watch()
@@ -53,10 +53,9 @@ export default function Register() {
         register_({ ...formVal })
             .unwrap()
             .then((res) => {
-                localStorage.setItem("email", JSON.stringify(formVal.email))
-                console.log(res);
                 enqueueSnackbar("Registration Successful", { variant: "success" });
                 navigate(`${paths.REGISTER}?verify=true`)
+                localStorage.setItem("email", JSON.stringify(formVal.email))
                 window.location.reload()
             })
             .catch((err) => {
@@ -97,42 +96,42 @@ export default function Register() {
                 </div>
 
                 <div className='w-1/2 h-full bg-[#160051] flex justify-center items-center'>
-                {
-                    verify ? (
-                        <div>
-                            <VerifyBusiness/>
-                        </div>
-                    ): (<div>
-                        <Stepper currentStep={currentStep} steps={2} />
-                        <div className='w-[30vw] '>
-                            <form>
-                                {/* Step 1 Fields */}
-                                <div className={currentStep === 1 ? "block" : "hidden"}>
-                                    <Input name="first_name" control={control} label="First Name" placeholder="Enter your first name" />
-                                    <Input name="last_name" control={control} label="Last Name" placeholder="Enter your last name" />
-                                    <Input name="business_name" control={control} label="Business Name" placeholder="Enter your business name" />
-                                    <Input name="email" control={control} label="Email" placeholder="Enter your email" />
-                                </div>
-
-                                {/* Step 2 Fields */}
-                                <div className={currentStep === 2 ? "block" : "hidden"}>
-                                    <Input name="phone" control={control} label="Phone" placeholder="Enter your phone number" />
-                                    <TextBox setValue={setValue} register={register} label="Address" placeholder="Enter your address" />
-                                    <Input name="password" control={control} label="Password" placeholder="Enter your password" type="password" />
-                                    <Input name="confirm_password" control={control} label="Confirm Password" placeholder="Confirm your password" type="password" />
-                                </div>
-
-
-                            </form>
-                            <div className='flex justify-center items-center'>
-                                {currentStep > 1 && <button className='w-48 h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 border border-[#cc33ba] text-white rounded-lg' onClick={() => setCurrentStep(currentStep - 1)}>Back</button>}
-                                <button disabled={!isValid} className='w-48 h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 bg-[#cc33ba] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed' onClick={handleBtnClick}>{currentStep === 1 ? "Proceed" : isLoading ? "Loading..." : "Submit"}</button>
+                    {
+                        verify ? (
+                            <div>
+                                <VerifyBusiness />
                             </div>
+                        ) : (<div>
+                            <Stepper currentStep={currentStep} steps={2} />
+                            <div className='w-[30vw] '>
+                                <form>
+                                    {/* Step 1 Fields */}
+                                    <div className={currentStep === 1 ? "block" : "hidden"}>
+                                        <Input name="first_name" control={control} label="First Name" placeholder="Enter your first name" />
+                                        <Input name="last_name" control={control} label="Last Name" placeholder="Enter your last name" />
+                                        <Input name="business_name" control={control} label="Business Name" placeholder="Enter your business name" />
+                                        <Input name="email" control={control} label="Email" placeholder="Enter your email" />
+                                    </div>
 
-                        </div>
-                    </div>)
-                }
-                    
+                                    {/* Step 2 Fields */}
+                                    <div className={currentStep === 2 ? "block" : "hidden"}>
+                                        <Input name="phone" control={control} label="Phone" placeholder="Enter your phone number" />
+                                        <TextBox setValue={setValue} register={register} label="Address" placeholder="Enter your address" />
+                                        <Input name="password" control={control} label="Password" placeholder="Enter your password" type="password" />
+                                        <Input name="confirm_password" control={control} label="Confirm Password" placeholder="Confirm your password" type="password" />
+                                    </div>
+
+
+                                </form>
+                                <div className='flex justify-center items-center'>
+                                    {currentStep > 1 && <button className='w-48 h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 border border-[#cc33ba] text-white rounded-lg' onClick={() => setCurrentStep(currentStep - 1)}>Back</button>}
+                                    <button disabled={!isValid} className='w-48 h-14 cursor-pointer py-2 mx-auto flex justify-center items-center mt-12 bg-[#cc33ba] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed' onClick={handleBtnClick}>{currentStep === 1 ? "Proceed" : isLoading ? "Loading..." : "Submit"}</button>
+                                </div>
+
+                            </div>
+                        </div>)
+                    }
+
 
                 </div>
             </div>
