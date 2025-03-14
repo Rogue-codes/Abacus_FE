@@ -23,11 +23,11 @@ export const planApi = createApi({
 
     subscribe: builder.mutation<
     any,
-    {cycle:string; business:string; plan:string; is_recurring:boolean;}
+    {business_email:string; plan:string; is_reoccuring:boolean; cycle:"MONTHLY"|'YEARLY';}
   >({
     query: (payload) => {
       return {
-        url: `business/login`,
+        url: `subscription/subscribe`,
         method: "POST",
         body: payload,
         headers: {
